@@ -15,7 +15,13 @@ while True:
         else:
             print("정신차리고, 제대로 된 숫자 형태로 입금액을 입력하세요.")
     if num == "2":
-        print("출금 기능입니다.")
+        withdraw_amount = input("출금할 금액을 입력해주세요.: ")
+        if withdraw_amount.isdigit() and int(withdraw_amount) > 0:
+            withdraw_amount = (min(balance, int(withdraw_amount))) # 잔액 부족으로 다시 되돌려줌
+            balance -= withdraw_amount # balance = balance - withdraw_amount
+            print(f'{withdraw_amount}원을 출금하셨습니다. 현재 잔액은 {balance}원 입니다.')
+        else:
+            print("정신차리고, 제대로 된 숫자 형태로 입금액을 입력하세요.")
     if num == "3":
         print("영수증 보기 기능입니다.")
     if num == "4":
